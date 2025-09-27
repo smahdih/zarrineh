@@ -37,6 +37,7 @@ class ManagementPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Blue,
             ])
+            ->sidebarCollapsibleOnDesktop()
             ->discoverResources(
                 in: app_path('Filament/Resources'),
                 for: 'App\Filament\Resources',
