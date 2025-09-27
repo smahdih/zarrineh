@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.1.1",
         "livewire/volt": "^1.7.0",
+        "nwidart/laravel-modules": "^12.0",
         "resma/filament-awin-theme": "^1.0",
         "spatie/laravel-permission": "^6.21"
     },
@@ -67,6 +68,11 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "merge-plugin": {
+            "include": [
+                "Modules/*/composer.json"
+            ]
         }
     },
     "config": {
@@ -75,7 +81,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "stable",

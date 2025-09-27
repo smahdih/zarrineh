@@ -1,0 +1,11 @@
+{
+    "name": "ResellersPanel",
+    "alias": "resellerspanel",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ResellersPanel\\Providers\\ResellersPanelServiceProvider"
+    ],
+    "files": []
+}
