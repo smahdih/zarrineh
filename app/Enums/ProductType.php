@@ -7,9 +7,9 @@ use Filament\Support\Contracts\HasLabel;
 
 enum ProductType: string implements HasLabel, HasColor
 {
-    case Test = "TEST";
-    case Order = "ORDER";
-    case Product = "PRODUCT";
+    case Test = 'TEST';
+    case Order = 'ORDER';
+    case Product = 'PRODUCT';
 
     public function getLabel(): string
     {

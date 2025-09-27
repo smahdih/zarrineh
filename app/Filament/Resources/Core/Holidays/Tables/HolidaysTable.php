@@ -20,12 +20,14 @@ class HolidaysTable
                     ->label('تاریخ')
                     ->jalaliDate()
                     ->sortable(),
-                TextColumn::make('event')
-                    ->label('عنوان')
-                    ->searchable(),
+                TextColumn::make('event')->label('عنوان')->searchable(),
                 TextColumn::make('type')
                     ->label('نوع')
-                    ->formatStateUsing(fn ($state) => HolidayType::tryFrom($state)?->getLabel() ?? $state)
+                    ->formatStateUsing(
+                        fn($state) => HolidayType::tryFrom(
+                            $state,
+                        )?->getLabel() ?? $state,
+                    )
                     ->searchable(),
                 TextColumn::make('team_id')
                     ->label('تیم')
@@ -48,13 +50,9 @@ class HolidaysTable
             ->filters([
                 //
             ])
-            ->recordActions([
-                EditAction::make(),
-            ])
+            ->recordActions([EditAction::make()])
             ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
+                BulkActionGroup::make([DeleteBulkAction::make()]),
             ]);
     }
 }

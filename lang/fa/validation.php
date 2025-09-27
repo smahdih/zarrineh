@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -14,17 +13,22 @@ return [
     */
 
     'accepted' => 'گزینه :attribute باید تایید شود',
-    'accepted_if' => 'زمانی که گزینه :other برابر :value است :attribute باید تایید شود',
+    'accepted_if' =>
+        'زمانی که گزینه :other برابر :value است :attribute باید تایید شود',
     'active_url' => 'گزینه :attribute یک آدرس سایت معتبر نیست',
     'after' => 'گزینه :attribute باید تاریخی بعد از :date باشد',
-    'after_or_equal' => 'گزینه :attribute باید تاریخی مساوی یا بعد از :date باشد',
+    'after_or_equal' =>
+        'گزینه :attribute باید تاریخی مساوی یا بعد از :date باشد',
     'alpha' => 'گزینه :attribute باید تنها شامل حروف باشد',
-    'alpha_dash' => 'گزینه :attribute باید تنها شامل حروف، اعداد، خط تیره و زیر خط باشد',
+    'alpha_dash' =>
+        'گزینه :attribute باید تنها شامل حروف، اعداد، خط تیره و زیر خط باشد',
     'alpha_num' => 'گزینه :attribute باید تنها شامل حروف و اعداد باشد',
     'array' => 'گزینه :attribute باید آرایه باشد',
-    'ascii' => 'گزینه :attribute تنها میتواند شامل تک حرف، عدد یا نماد ها باشد. .',
+    'ascii' =>
+        'گزینه :attribute تنها میتواند شامل تک حرف، عدد یا نماد ها باشد. .',
     'before' => 'گزینه :attribute باید تاریخی قبل از :date باشد',
-    'before_or_equal' => 'گزینه :attribute باید تاریخی مساوی یا قبل از :date باشد',
+    'before_or_equal' =>
+        'گزینه :attribute باید تاریخی مساوی یا قبل از :date باشد',
     'between' => [
         'array' => 'گزینه :attribute باید بین :min و :max آیتم باشد',
         'file' => 'گزینه :attribute باید بین :min و :max کیلوبایت باشد',
@@ -40,19 +44,24 @@ return [
     'date_format' => 'گزینه :attribute با فرمت :format همخوانی ندارد',
     'decimal' => 'گزینه :attribute باید :decimal رقم اعشار داشته باشد.',
     'declined' => 'گزینه :attribute باید رد شود',
-    'declined_if' => 'گزینه :attribute زمانی که :other برابر :value است باید رد شود',
+    'declined_if' =>
+        'گزینه :attribute زمانی که :other برابر :value است باید رد شود',
     'different' => 'گزینه :attribute و :other باید متفاوت باشند',
     'digits' => 'گزینه :attribute باید :digits عدد باشد',
     'digits_between' => 'گزینه :attribute باید بین :min و :max عدد باشد',
     'dimensions' => 'ابعاد تصویر گزینه :attribute مجاز نمی باشد',
     'distinct' => 'گزینه :attribute دارای افزونگی داده می باشد',
-    'doesnt_end_with' => 'گزینه :attribute نباید با این مقادیر به پایان برسد: :values.',
-    'doesnt_start_with' => 'گزینه :attribute نباید با این مقادیر شروع شود: :values.',
+    'doesnt_end_with' =>
+        'گزینه :attribute نباید با این مقادیر به پایان برسد: :values.',
+    'doesnt_start_with' =>
+        'گزینه :attribute نباید با این مقادیر شروع شود: :values.',
     'email' => 'گزینه :attribute باید یک آدرس ایمیل صحیح باشد',
-    'ends_with' => 'گزینه :attribute باید با یکی از این مقادیر پایان یابد، :values',
+    'ends_with' =>
+        'گزینه :attribute باید با یکی از این مقادیر پایان یابد، :values',
     'enum' => 'گزینه :attribute صحیح نمی باشد',
     'exists' => 'گزینه انتخاب شده :attribute صحیح نمی باشد',
-    'extensions' => 'فیلد :attribute باید دارای یکی از پسوندهای زیر باشد: :values.',
+    'extensions' =>
+        'فیلد :attribute باید دارای یکی از پسوندهای زیر باشد: :values.',
     'file' => 'گزینه :attribute باید یک فایل باشد',
     'filled' => 'گزینه :attribute نمی تواند خالی باشد',
     'gt' => [
@@ -68,7 +77,7 @@ return [
         'string' => 'گزینه :attribute باید بزرگتر یا مساوی :value کاراکتر باشد',
     ],
     'image' => 'گزینه :attribute باید از نوع تصویر باشد',
-    'hex_color'=>'فیلد :attribute باید یک رنگ هگزادسیمال معتبر باشد.',
+    'hex_color' => 'فیلد :attribute باید یک رنگ هگزادسیمال معتبر باشد.',
     'in' => 'گزینه انتخابی :attribute صحیح نمی باشد',
     'in_array' => 'گزینه :attribute در :other وجود ندارد',
     'integer' => 'گزینه :attribute باید از نوع عددی باشد',
@@ -90,7 +99,8 @@ return [
         'array' => 'گزینه :attribute نباید کمتر از :value آیتم داشته باشد',
         'file' => 'گزینه :attribute باید مساوی یا کمتر از :value کیلوبایت باشد',
         'numeric' => 'گزینه :attribute باید مساوی یا کمتر از :value باشد',
-        'string' => 'گزینه :attribute باید مساوی یا کمتر از :value کاراکتر باشد',
+        'string' =>
+            'گزینه :attribute باید مساوی یا کمتر از :value کاراکتر باشد',
     ],
     'mac_address' => 'گزینه :attribute باید یک مک آدرس معتبر باشد',
     'max' => [
@@ -101,7 +111,8 @@ return [
     ],
     'max_digits' => 'گزینه :attribute نباید بیشتر از :max رقم باشد',
     'mimes' => 'گزینه :attribute باید دارای یکی از این فرمت ها باشد: :values',
-    'mimetypes' =>  'گزینه :attribute باید دارای یکی از این فرمت ها باشد: :values',
+    'mimetypes' =>
+        'گزینه :attribute باید دارای یکی از این فرمت ها باشد: :values',
     'min' => [
         'array' => 'گزینه :attribute باید حداقل :min آیتم داشته باشد',
         'file' => 'گزینه :attribute باید حداقل :min کیلوبایت باشد',
@@ -110,40 +121,59 @@ return [
     ],
     'min_digits' => 'گزینه :attribute باید حداقل :min رقم باشد',
     'missing' => 'گزینه :attribute نباید تعریف شود.',
-    'missing_if' => 'گزینه :attribute زمانی که مقدار :other برابر :value می باشد، نباید تعریف شود',
-    'missing_unless' => 'گزینه :attribute نباید تعریف شود مگر اینکه گزینه :other برابر :value باشد',
-    'missing_with' => 'گزینه :attribute زمانی که مقدار :values تعریف شده است دیگر نباید تعریف شود.',
-    'missing_with_all' => 'گزینه :attribute زمانی که :values مقدار دارد دیگر نباید تعریف شود.',
+    'missing_if' =>
+        'گزینه :attribute زمانی که مقدار :other برابر :value می باشد، نباید تعریف شود',
+    'missing_unless' =>
+        'گزینه :attribute نباید تعریف شود مگر اینکه گزینه :other برابر :value باشد',
+    'missing_with' =>
+        'گزینه :attribute زمانی که مقدار :values تعریف شده است دیگر نباید تعریف شود.',
+    'missing_with_all' =>
+        'گزینه :attribute زمانی که :values مقدار دارد دیگر نباید تعریف شود.',
     'multiple_of' => 'گزینه :attribute باید حاصل ضرب :value باشد',
     'not_in' => 'گزینه انتخابی :attribute صحیح نمی باشد',
     'not_regex' => 'فرمت گزینه :attribute صحیح نمی باشد',
     'numeric' => 'گزینه :attribute باید از نوع عددی باشد',
     'password' => [
         'letters' => 'گزینه :attribute باید حداقل شامل یک حرف باشد',
-        'mixed' => 'گزینه :attribute باید شامل حداقل یک حرف بزرگ و یک حرف کوچک باشد',
+        'mixed' =>
+            'گزینه :attribute باید شامل حداقل یک حرف بزرگ و یک حرف کوچک باشد',
         'numbers' => 'گزینه :attribute باید شامل حداقل یک عدد باشد',
         'symbols' => 'گزینه :attribute باید شامل حداقل یک کارکتر خاص باشد',
-        'uncompromised' => 'محتوای وارده شده در :attribute ایمن نمی باشد. لطفا گزینه :attribute را اصلاح فرمایید',
+        'uncompromised' =>
+            'محتوای وارده شده در :attribute ایمن نمی باشد. لطفا گزینه :attribute را اصلاح فرمایید',
     ],
     'present' => 'گزینه :attribute باید از نوع درصد باشد',
-    'present_if' => 'وقتی :other :value باشد فیلد :attribute باید وجود داشته باشد.',
-    'present_unless' => 'فیلد :attribute باید وجود داشته باشد مگر اینکه :other :value باشد.',
-    'present_with' => 'وقتی :values وجود دارد، فیلد :attribute باید وجود داشته باشد.',
-    'present_with_all' => 'وقتی :values وجود دارد، فیلد :attribute باید وجود داشته باشد.',
+    'present_if' =>
+        'وقتی :other :value باشد فیلد :attribute باید وجود داشته باشد.',
+    'present_unless' =>
+        'فیلد :attribute باید وجود داشته باشد مگر اینکه :other :value باشد.',
+    'present_with' =>
+        'وقتی :values وجود دارد، فیلد :attribute باید وجود داشته باشد.',
+    'present_with_all' =>
+        'وقتی :values وجود دارد، فیلد :attribute باید وجود داشته باشد.',
     'prohibited' => 'گزینه :attribute مجاز نمی باشد',
-    'prohibited_if' => 'گزینه :attribute زمانی که :other برابر :value باشد مجاز نمی باشد',
-    'prohibited_unless' => 'گزینه :attribute مجاز نیست مگر :other برابر :values باشد',
+    'prohibited_if' =>
+        'گزینه :attribute زمانی که :other برابر :value باشد مجاز نمی باشد',
+    'prohibited_unless' =>
+        'گزینه :attribute مجاز نیست مگر :other برابر :values باشد',
     'prohibits' => 'گزینه :attribute باعث ممنوعیت :other می باشد',
     'regex' => 'فرمت گزینه :attribute صحیح نمی باشد',
     'required' => 'تکمیل گزینه :attribute الزامی است',
     'required_array_keys' => 'گزینه :attribute باید شامل مقادیر: :values باشد',
-    'required_if' => 'تکمیل گزینه :attribute زمانی که :other دارای مقدار :value است الزامی می باشد',
-    'required_if_accepted' => 'تکمیل گزینه :attribute زمانی که :other انتخاب شده الزامی است',
-    'required_unless' => 'تکمیل گزینه :attribute الزامی می باشد مگر :other دارای مقدار :values باشد',
-    'required_with' => 'تکمیل گزینه :attribute زمانی که مقدار :values درصد است الزامی است',
-    'required_with_all' => 'تکمیل گزینه :attribute زمانی که مقادیر :values درصد است الزامی می باشد',
-    'required_without' => 'تکمیل گزینه :attribute زمانی که مقدار :values درصد نیست الزامی است',
-    'required_without_all' => 'تکمیل گزینه :attribute زمانی که هیچ کدام از مقادیر :values درصد نیست الزامی است',
+    'required_if' =>
+        'تکمیل گزینه :attribute زمانی که :other دارای مقدار :value است الزامی می باشد',
+    'required_if_accepted' =>
+        'تکمیل گزینه :attribute زمانی که :other انتخاب شده الزامی است',
+    'required_unless' =>
+        'تکمیل گزینه :attribute الزامی می باشد مگر :other دارای مقدار :values باشد',
+    'required_with' =>
+        'تکمیل گزینه :attribute زمانی که مقدار :values درصد است الزامی است',
+    'required_with_all' =>
+        'تکمیل گزینه :attribute زمانی که مقادیر :values درصد است الزامی می باشد',
+    'required_without' =>
+        'تکمیل گزینه :attribute زمانی که مقدار :values درصد نیست الزامی است',
+    'required_without_all' =>
+        'تکمیل گزینه :attribute زمانی که هیچ کدام از مقادیر :values درصد نیست الزامی است',
     'same' => 'گزینه های :attribute و :other باید یکی باشند',
     'size' => [
         'array' => 'گزینه :attribute باید شامل :size آیتم باشد',
@@ -151,7 +181,8 @@ return [
         'numeric' => 'گزینه :attribute باید :size باشد',
         'string' => 'گزینه :attribute باید :size  کاراکتر باشد',
     ],
-    'starts_with' => 'گزینه :attribute باید با یکی از این مقادیر شروع شود، :values',
+    'starts_with' =>
+        'گزینه :attribute باید با یکی از این مقادیر شروع شود، :values',
     'string' => 'گزینه :attribute باید تنها شامل حروف باشد',
     'timezone' => 'گزینه :attribute باید از نوع منطقه زمانی صحیح باشد',
     'unique' => 'این :attribute از قبل ثبت شده است',
@@ -231,5 +262,4 @@ return [
         'mobile_number' => 'شماره تماس',
         'work_number' => 'شماره تماس ثابت',
     ],
-
 ];

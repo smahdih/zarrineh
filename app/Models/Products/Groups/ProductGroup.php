@@ -10,16 +10,14 @@ class ProductGroup extends Model
 {
     protected $table = 'product_groups';
 
-    protected $fillable = [
-        'name',
-    ];
+    protected $fillable = ['name'];
 
-    public function details() : HasMany
+    public function details(): HasMany
     {
         return $this->hasMany(ProductGroupDetail::class, 'product_group_id');
     }
 
-    public function products() : HasMany
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class, 'product_group_id');
     }

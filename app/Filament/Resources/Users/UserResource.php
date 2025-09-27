@@ -22,14 +22,14 @@ use App\Filament\Resources\Users\Schemas\UserInfolist;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
-    protected static ?string $modelLabel = "کارمند";
-    protected static ?string $pluralLabel = "کارمند ها";
+    protected static ?string $modelLabel = 'کارمند';
+    protected static ?string $pluralLabel = 'کارمند ها';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
 
     protected static ?string $recordTitleAttribute = 'Users';
 
-    protected static string | UnitEnum | null $navigationGroup = 'پرسنلی';
+    protected static string|UnitEnum|null $navigationGroup = 'پرسنلی';
 
     public static function form(Schema $schema): Schema
     {
@@ -49,8 +49,8 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
-        ];
+                //
+            ];
     }
 
     public static function getPages(): array
@@ -63,7 +63,7 @@ class UserResource extends Resource
         ];
     }
 
-        public static function blockAction(): Action
+    public static function blockAction(): Action
     {
         return Action::make(name: 'block')
             ->label('بستن دسترسی')
@@ -74,7 +74,7 @@ class UserResource extends Resource
                 $record->is_active = false;
                 $record->save();
             })
-            ->visible(fn ($record) => $record->is_active);
+            ->visible(fn($record) => $record->is_active);
     }
 
     public static function activateAction(): Action
@@ -88,7 +88,7 @@ class UserResource extends Resource
                 $record->is_active = true;
                 $record->save();
             })
-            ->visible(fn ($record) => !$record->is_active);
+            ->visible(fn($record) => !$record->is_active);
     }
 
     public static function resetPasswordAction(): Action

@@ -17,8 +17,6 @@ class ListSettings extends ListRecords
             return [];
         }
 
-        return [
-            CreateAction::make(),
-        ];
+        return [CreateAction::make()];
     }
 }

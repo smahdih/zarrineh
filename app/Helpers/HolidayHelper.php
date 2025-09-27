@@ -23,8 +23,10 @@ class HolidayHelper
             ->exists();
     }
 
-    private static function hasMatchingRecurringHoliday(Carbon $date, ?int $teamId): bool
-    {
+    private static function hasMatchingRecurringHoliday(
+        Carbon $date,
+        ?int $teamId,
+    ): bool {
         $recurringHolidays = RecurringHoliday::query()
             ->where('enabled', true)
             ->when($teamId, fn($q) => self::applyTeamFilter($q, $teamId))
@@ -66,4 +68,3 @@ class HolidayHelper
         return false;
     }
 }
-

@@ -11,10 +11,7 @@ class CategoryProduct extends Model
 {
     protected $table = 'categories_products';
     public $incrementing = true;
-    protected $fillable = [
-        'product_id',
-        'sub_category_id',
-    ];
+    protected $fillable = ['product_id', 'sub_category_id'];
 
     public function product(): BelongsTo
     {

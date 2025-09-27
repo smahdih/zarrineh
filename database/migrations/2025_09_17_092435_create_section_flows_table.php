@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,8 +12,14 @@ return new class extends Migration
     {
         Schema::create('section_flows', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('section_id')->constrained('sections')->cascadeOnDelete();
-            $table->foreignId('procedure_id')->constrained('procedures')->cascadeOnDelete();
+            $table
+                ->foreignId('section_id')
+                ->constrained('sections')
+                ->cascadeOnDelete();
+            $table
+                ->foreignId('procedure_id')
+                ->constrained('procedures')
+                ->cascadeOnDelete();
             $table->integer('level');
             $table->timestamps();
         });

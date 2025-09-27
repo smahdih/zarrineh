@@ -9,11 +9,9 @@ class ProductCategory extends Model
 {
     protected $table = 'product_categories';
 
-    protected $fillable = [
-        'name',
-    ];
+    protected $fillable = ['name'];
 
-    public function subCategories() : HasMany
+    public function subCategories(): HasMany
     {
         return $this->hasMany(ProductSubCategory::class, 'category_id');
     }

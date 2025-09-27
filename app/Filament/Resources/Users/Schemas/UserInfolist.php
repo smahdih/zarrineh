@@ -21,14 +21,10 @@ class UserInfolist
                 TextEntry::make('personal_id')->label('کد پرسنلی'),
                 TextEntry::make('first_name')->label('نام'),
                 TextEntry::make('last_name')->label('نام خانوادگی'),
-                TextEntry::make('gender')
-                    ->label('جنسیت')
-                    ->badge(),
+                TextEntry::make('gender')->label('جنسیت')->badge(),
                 TextEntry::make('national_id')->label('شماره ملی'),
                 TextEntry::make('phone')->label('شماره موبایل'),
-                TextEntry::make('email')
-                    ->label('ایمیل آدرس')
-                    ->placeholder('-'),
+                TextEntry::make('email')->label('ایمیل آدرس')->placeholder('-'),
                 TextEntry::make('address')
                     ->label('آدرس')
                     ->placeholder('-')
@@ -36,6 +32,7 @@ class UserInfolist
                 IconEntry::make('is_active')
                     ->label(label: 'وضعیت دسترسی')
                     ->boolean(),
-            ])->columns(4);
+            ])
+            ->columns(4);
     }
 }

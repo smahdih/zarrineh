@@ -36,21 +36,20 @@ class SyncIranianHolidaysJob implements ShouldQueue
             $this->year,
             $this->month,
             $this->day,
-            $this->onlyHolidays
+            $this->onlyHolidays,
         );
 
         foreach ($holidays as $item) {
             Holiday::updateOrCreate(
                 [
                     'date' => $item['date_gregorian'],
-
                 ],
                 [
-                    'holiday'   => $item['holiday'],
-                    'event'     => $item['event'] ?? null,
-                    'type'      => 'national',
+                    'holiday' => $item['holiday'],
+                    'event' => $item['event'] ?? null,
+                    'type' => 'national',
                     'is_manual' => false,
-                ]
+                ],
             );
         }
     }

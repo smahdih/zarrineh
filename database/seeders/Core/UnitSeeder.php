@@ -139,9 +139,12 @@ class UnitSeeder extends Seeder
         ];
 
         foreach ($units as $unit) {
-            Unit::firstOrCreate([
-                'name' => $unit['name'],
-            ], $unit);
+            Unit::firstOrCreate(
+                [
+                    'name' => $unit['name'],
+                ],
+                $unit,
+            );
         }
     }
 }

@@ -119,10 +119,7 @@ class ProductCategorySeeder extends Seeder
             // دسته وقایع
             [
                 'name' => 'شهادت یا ولادت',
-                'sub_categories' => [
-                    'شهادت',
-                    'ولادت',
-                ],
+                'sub_categories' => ['شهادت', 'ولادت'],
             ],
 
             // مکان‌های مذهبی و زیارتگاه‌ها
@@ -232,12 +229,14 @@ class ProductCategorySeeder extends Seeder
         ];
 
         foreach ($data as $catData) {
-            $category = ProductCategory::updateOrCreate(['name' => $catData['name']]);
+            $category = ProductCategory::updateOrCreate([
+                'name' => $catData['name'],
+            ]);
 
             foreach ($catData['sub_categories'] as $subName) {
                 ProductSubCategory::updateOrCreate([
                     'category_id' => $category->id,
-                    'name'        => $subName,
+                    'name' => $subName,
                 ]);
             }
         }

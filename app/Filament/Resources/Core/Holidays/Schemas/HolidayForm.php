@@ -14,25 +14,18 @@ class HolidayForm
 {
     public static function configure(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                DatePicker::make('date')
-                    ->label('تاریخ')
-                    ->jalali()
-                    ->required(),
-                TextInput::make('event')
-                    ->label('عنوان'),
-                Select::make('type')
-                    ->label('نوع')
-                    ->options(HolidayType::class)
-                    ->required(),
-                Toggle::make('is_manual')
-                    ->label('تعطیلی سفارشی')
-                    ->required(),
-                Select::make('team_id')
-                    ->label('تیم')
-                    ->options(Team::all()->pluck('name', 'id'))
-                    ->required(),
-            ]);
+        return $schema->components([
+            DatePicker::make('date')->label('تاریخ')->jalali()->required(),
+            TextInput::make('event')->label('عنوان'),
+            Select::make('type')
+                ->label('نوع')
+                ->options(HolidayType::class)
+                ->required(),
+            Toggle::make('is_manual')->label('تعطیلی سفارشی')->required(),
+            Select::make('team_id')
+                ->label('تیم')
+                ->options(Team::all()->pluck('name', 'id'))
+                ->required(),
+        ]);
     }
 }

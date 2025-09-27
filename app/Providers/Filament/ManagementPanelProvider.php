@@ -29,20 +29,28 @@ class ManagementPanelProvider extends PanelProvider
             ->default()
             ->id('management')
             ->path('management')
-            ->font('dana', asset('build/assets/app-BfUD28Bx.css'), LocalFontProvider::class)
+            ->font(
+                'dana',
+                asset('build/assets/app-BfUD28Bx.css'),
+                LocalFontProvider::class,
+            )
             ->colors([
                 'primary' => Color::Blue,
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
-            ->pages([
-                Dashboard::class,
-            ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
-            ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
-            ])
+            ->discoverResources(
+                in: app_path('Filament/Resources'),
+                for: 'App\Filament\Resources',
+            )
+            ->discoverPages(
+                in: app_path('Filament/Pages'),
+                for: 'App\Filament\Pages',
+            )
+            ->pages([Dashboard::class])
+            ->discoverWidgets(
+                in: app_path('Filament/Widgets'),
+                for: 'App\Filament\Widgets',
+            )
+            ->widgets([AccountWidget::class, FilamentInfoWidget::class])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -54,11 +62,7 @@ class ManagementPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->authMiddleware([
-                Authenticate::class,
-            ])
-            ->plugins([
-                FilamentAwinTheme::make()
-            ]);
+            ->authMiddleware([Authenticate::class])
+            ->plugins([FilamentAwinTheme::make()]);
     }
 }

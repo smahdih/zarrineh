@@ -28,20 +28,23 @@ test('profile information can be updated', function () {
     expect($user->email_verified_at)->toBeNull();
 });
 
-test('email verification status is unchanged when email address is unchanged', function () {
-    $user = User::factory()->create();
+test(
+    'email verification status is unchanged when email address is unchanged',
+    function () {
+        $user = User::factory()->create();
 
-    $this->actingAs($user);
+        $this->actingAs($user);
 
-    $response = Volt::test('settings.profile')
-        ->set('name', 'Test User')
-        ->set('email', $user->email)
-        ->call('updateProfileInformation');
+        $response = Volt::test('settings.profile')
+            ->set('name', 'Test User')
+            ->set('email', $user->email)
+            ->call('updateProfileInformation');
 
-    $response->assertHasNoErrors();
+        $response->assertHasNoErrors();
 
-    expect($user->refresh()->email_verified_at)->not->toBeNull();
-});
+        expect($user->refresh()->email_verified_at)->not->toBeNull();
+    },
+);
 
 test('user can delete their account', function () {
     $user = User::factory()->create();
@@ -52,9 +55,7 @@ test('user can delete their account', function () {
         ->set('password', 'password')
         ->call('deleteUser');
 
-    $response
-        ->assertHasNoErrors()
-        ->assertRedirect('/');
+    $response->assertHasNoErrors()->assertRedirect('/');
 
     expect($user->fresh())->toBeNull();
     expect(auth()->check())->toBeFalse();

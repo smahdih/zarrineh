@@ -65,7 +65,10 @@ class Product extends Model
 
     public function avatar(): HasOne
     {
-        return $this->hasOne(ProductPicture::class, 'product_id')->where('avatar', true);
+        return $this->hasOne(ProductPicture::class, 'product_id')->where(
+            'avatar',
+            true,
+        );
     }
 
     public function pictures(): HasMany
@@ -80,6 +83,11 @@ class Product extends Model
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(ProductSubCategory::class, 'categories_products', 'product_id', 'sub_category_id');
+        return $this->belongsToMany(
+            ProductSubCategory::class,
+            'categories_products',
+            'product_id',
+            'sub_category_id',
+        );
     }
 }

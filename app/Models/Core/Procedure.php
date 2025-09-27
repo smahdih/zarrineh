@@ -8,8 +8,5 @@ class Procedure extends Model
 {
     protected $table = 'procedures';
 
-    protected $fillable = [
-        'name',
-        'type',
-    ];
+    protected $fillable = ['name', 'type'];
 }

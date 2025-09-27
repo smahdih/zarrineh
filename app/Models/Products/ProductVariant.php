@@ -19,7 +19,7 @@ class ProductVariant extends Model
         'meta',
     ];
 
-    public function product() : BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class, 'product_id');
     }

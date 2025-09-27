@@ -9,12 +9,9 @@ class ProductSubCategory extends Model
 {
     protected $table = 'product_sub_categories';
 
-    protected $fillable = [
-        'name',
-        'category_id',
-    ];
+    protected $fillable = ['name', 'category_id'];
 
-    public function category() : BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');
     }

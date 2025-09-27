@@ -10,18 +10,14 @@ class ProductGroupDetail extends Model
 {
     protected $table = 'product_group_details';
 
-    protected $fillable = [
-        'product_group_id',
-        'name',
-        'unit_id',
-    ];
+    protected $fillable = ['product_group_id', 'name', 'unit_id'];
 
-    public function productGroup() : BelongsTo
+    public function productGroup(): BelongsTo
     {
         return $this->belongsTo(ProductGroup::class, 'product_group_id');
     }
 
-    public function unit() : BelongsTo
+    public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class, 'unit_id');
     }

@@ -10,10 +10,10 @@ class CreateSetting extends CreateRecord
 {
     protected static string $resource = SettingResource::class;
 
-        protected function beforeFill(): void
+    protected function beforeFill(): void
     {
         if (Setting::exists()) {
-            to_route("filament.management.resources.core.procedures.index");
+            to_route('filament.management.resources.core.procedures.index');
         }
     }
 }

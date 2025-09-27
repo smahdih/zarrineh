@@ -15,25 +15,21 @@ class UnitsTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label("نام واحداندازه گیری")
+                    ->label('نام واحداندازه گیری')
                     ->searchable(),
                 TextColumn::make('symbol_en')
-                    ->label("سمبل انگلیسی")
+                    ->label('سمبل انگلیسی')
                     ->searchable(),
                 TextColumn::make('symbol_fa')
-                    ->label("سمبل فارسی")
+                    ->label('سمبل فارسی')
                     ->searchable(),
             ])
             ->filters([
                 //
             ])
-            ->recordActions([
-                EditAction::make(),
-            ])
+            ->recordActions([EditAction::make()])
             ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
+                BulkActionGroup::make([DeleteBulkAction::make()]),
             ]);
     }
 }

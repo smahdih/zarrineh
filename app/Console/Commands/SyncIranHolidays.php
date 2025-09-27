@@ -37,11 +37,12 @@ class SyncIranHolidays extends Command
 
         SyncIranianHolidaysJob::dispatch($year, $month, $day, $onlyHolidays);
 
-        $this->info("Job for syncing holidays dispatched (year: $year" .
-            ($month ? ", month: $month" : "") .
-            ($day ? ", day: $day" : "") .
-            ($onlyHolidays ? ", فقط تعطیلی‌ها" : ", همه روزها") .
-            ")."
+        $this->info(
+            "Job for syncing holidays dispatched (year: $year" .
+                ($month ? ", month: $month" : '') .
+                ($day ? ", day: $day" : '') .
+                ($onlyHolidays ? ', فقط تعطیلی‌ها' : ', همه روزها') .
+                ').',
         );
     }
 }

@@ -29,14 +29,10 @@ class UserForm
                     ->label('کد پرسنلی')
                     ->unique()
                     ->required(),
-                TextInput::make('first_name')
-                ->label('نام')
-                    ->required(),
-                TextInput::make('last_name')
-                ->label('نام خانوادگی')
-                    ->required(),
+                TextInput::make('first_name')->label('نام')->required(),
+                TextInput::make('last_name')->label('نام خانوادگی')->required(),
                 Select::make('gender')
-                ->label('جنسیت')
+                    ->label('جنسیت')
                     ->options(UserGenderEnum::class)
                     ->required(),
                 TextInput::make('national_id')
@@ -52,9 +48,8 @@ class UserForm
                     ->label('آدرس ایمیل')
                     ->email()
                     ->unique(),
-                Textarea::make('address')
-                    ->label('آدرس')
-                    ->columnSpanFull(),
-            ])->columns(3);
+                Textarea::make('address')->label('آدرس')->columnSpanFull(),
+            ])
+            ->columns(3);
     }
 }

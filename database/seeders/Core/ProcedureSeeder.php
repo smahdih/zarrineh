@@ -16,11 +16,11 @@ class ProcedureSeeder extends Seeder
         $data = [
             [
                 'name' => 'سابلیمیشن',
-                'type' => 'PRODUCE'
+                'type' => 'PRODUCE',
             ],
             [
                 'name' => 'سابلیمیشن',
-                'type' => 'TEST'
+                'type' => 'TEST',
             ],
         ];
 

@@ -10,11 +10,7 @@ class Section extends Model
 {
     protected $table = 'sections';
 
-    protected $fillable = [
-        'department_id',
-        'name',
-        'slug',
-    ];
+    protected $fillable = ['department_id', 'name', 'slug'];
 
     public function department(): BelongsTo
     {

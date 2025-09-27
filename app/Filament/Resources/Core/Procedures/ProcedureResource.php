@@ -18,11 +18,11 @@ use UnitEnum;
 class ProcedureResource extends Resource
 {
     protected static ?string $model = Procedure::class;
-    protected static ?string $modelLabel = "روند کاری";
-    protected static ?string $pluralModelLabel = "روندهای کاری";
+    protected static ?string $modelLabel = 'روند کاری';
+    protected static ?string $pluralModelLabel = 'روندهای کاری';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-    protected static ?string $navigationLabel = "روندهای کاری";
-    protected static string | UnitEnum | null $navigationGroup = "مدیریت تولید";
+    protected static ?string $navigationLabel = 'روندهای کاری';
+    protected static string|UnitEnum|null $navigationGroup = 'مدیریت تولید';
     protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
@@ -38,8 +38,8 @@ class ProcedureResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
-        ];
+                //
+            ];
     }
 
     public static function getPages(): array

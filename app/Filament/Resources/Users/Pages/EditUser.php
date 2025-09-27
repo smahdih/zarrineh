@@ -13,9 +13,6 @@ class EditUser extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-            ViewAction::make(),
-            DeleteAction::make(),
-        ];
+        return [ViewAction::make(), DeleteAction::make()];
     }
 }

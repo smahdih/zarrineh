@@ -19,30 +19,36 @@ class DepartmentAndSectionSeeder extends Seeder
             'production' => [
                 'name' => 'تولید',
                 'sections' => [
-                    ['name' => 'پلاتر',         'slug' => 'plater'],
-                    ['name' => 'لیزر',          'slug' => 'laser'],
-                    ['name' => 'کلندر',         'slug' => 'calender'],
-                    ['name' => 'برش',           'slug' => 'cutting'],
-                    ['name' => 'خیاطی',         'slug' => 'sewing'],
-                    ['name' => 'پرس',           'slug' => 'press'],
-                    ['name' => 'بسته بندی',     'slug' => 'packaging'],
-                    ['name' => 'چاپ سیلک',      'slug' => 'silk-printing'],
-                    ['name' => 'عکاسی شابلون',  'slug' => 'stencil-photography'],
+                    ['name' => 'پلاتر', 'slug' => 'plater'],
+                    ['name' => 'لیزر', 'slug' => 'laser'],
+                    ['name' => 'کلندر', 'slug' => 'calender'],
+                    ['name' => 'برش', 'slug' => 'cutting'],
+                    ['name' => 'خیاطی', 'slug' => 'sewing'],
+                    ['name' => 'پرس', 'slug' => 'press'],
+                    ['name' => 'بسته بندی', 'slug' => 'packaging'],
+                    ['name' => 'چاپ سیلک', 'slug' => 'silk-printing'],
+                    ['name' => 'عکاسی شابلون', 'slug' => 'stencil-photography'],
                 ],
             ],
             'administrative' => [
                 'name' => 'اداری',
                 'sections' => [
-                    ['name' => 'مدیریت',    'slug' => 'management'],
-                    ['name' => 'طراحی',     'slug' => 'design'],
-                    ['name' => 'حسابداری',  'slug' => 'accounting'],
+                    ['name' => 'مدیریت', 'slug' => 'management'],
+                    ['name' => 'طراحی', 'slug' => 'design'],
+                    ['name' => 'حسابداری', 'slug' => 'accounting'],
                 ],
             ],
             'warehouse' => [
                 'name' => 'انبارداری',
                 'sections' => [
-                    ['name' => 'انبار - مواد اولیه',   'slug' => 'warehouse-raw-material'],
-                    ['name' => 'انبار - محصولات',      'slug' => 'warehouse-products'],
+                    [
+                        'name' => 'انبار - مواد اولیه',
+                        'slug' => 'warehouse-raw-material',
+                    ],
+                    [
+                        'name' => 'انبار - محصولات',
+                        'slug' => 'warehouse-products',
+                    ],
                 ],
             ],
         ];
@@ -51,7 +57,7 @@ class DepartmentAndSectionSeeder extends Seeder
             // دپارتمان را بساز یا به‌روزرسانی کن
             $department = Department::updateOrCreate(
                 ['slug' => $deptSlug],
-                ['name' => $deptData['name'], 'slug' => $deptSlug]
+                ['name' => $deptData['name'], 'slug' => $deptSlug],
             );
 
             // سِکشن‌های مربوط به این دپارتمان را بساز
@@ -62,7 +68,7 @@ class DepartmentAndSectionSeeder extends Seeder
                         'department_id' => $department->id,
                         'name' => $section['name'],
                         'slug' => $section['slug'],
-                    ]
+                    ],
                 );
             }
         }

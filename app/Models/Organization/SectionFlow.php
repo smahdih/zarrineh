@@ -10,18 +10,14 @@ class SectionFlow extends Pivot
 {
     protected $table = 'section_flows';
 
-    protected $fillable = [
-        'section_id',
-        'procedure_id',
-        'level',
-    ];
+    protected $fillable = ['section_id', 'procedure_id', 'level'];
 
-    public function section() : BelongsTo
+    public function section(): BelongsTo
     {
         return $this->belongsTo(Section::class, 'section_id');
     }
 
-    public function procedure() : BelongsTo
+    public function procedure(): BelongsTo
     {
         return $this->belongsTo(Procedure::class, 'procedure_id');
     }

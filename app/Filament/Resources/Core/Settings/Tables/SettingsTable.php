@@ -14,23 +14,15 @@ class SettingsTable
     {
         return $table
             ->columns([
-                TextColumn::make("minimum_output")->label(
-                    "حداقل خروجی"
-                ),
-                TextColumn::make("maximum_output")->label(
-                    "حداکثر خروجی"
-                ),
+                TextColumn::make('minimum_output')->label('حداقل خروجی'),
+                TextColumn::make('maximum_output')->label('حداکثر خروجی'),
             ])
             ->filters([
                 //
             ])
-            ->recordActions([
-                EditAction::make(),
-            ])
+            ->recordActions([EditAction::make()])
             ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
+                BulkActionGroup::make([DeleteBulkAction::make()]),
             ]);
     }
 }

@@ -40,9 +40,7 @@ class UsersTable
                     ->label('کد ملی')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('phone')
-                    ->label('شماره همراه')
-                    ->searchable(),
+                TextColumn::make('phone')->label('شماره همراه')->searchable(),
                 TextColumn::make('email')
                     ->label('آدرس ایمیل')
                     ->searchable()
@@ -72,9 +70,6 @@ class UsersTable
                 UserResource::activateAction(),
                 UserResource::resetPasswordAction(),
             ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                ]),
-            ]);
+            ->toolbarActions([BulkActionGroup::make([])]);
     }
 }

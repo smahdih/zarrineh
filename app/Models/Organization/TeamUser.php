@@ -11,18 +11,14 @@ class TeamUser extends Pivot
 {
     protected $table = 'team_users';
 
-    protected $fillable = [
-        'team_id',
-        'user_id',
-        'is_manager',
-    ];
+    protected $fillable = ['team_id', 'user_id', 'is_manager'];
 
-    public function team() : BelongsTo
+    public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class, 'team_id');
     }
 
-    public function user() : BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }

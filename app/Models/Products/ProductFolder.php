@@ -9,12 +9,9 @@ class ProductFolder extends Model
 {
     protected $table = 'product_folders';
 
-    protected $fillable = [
-        'serial',
-        'avatar',
-    ];
+    protected $fillable = ['serial', 'avatar'];
 
-    public function products() : HasMany
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class, 'folder_id');
     }

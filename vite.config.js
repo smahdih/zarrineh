@@ -1,8 +1,6 @@
-import {
-    defineConfig
-} from 'vite';
+import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import collectModuleAssetsPaths from './vite-module-loader.js';
 
@@ -10,7 +8,7 @@ async function getConfig() {
     const paths = [
         'resources/css/app.css',
         'resources/js/app.js',
-        'vendor/resma/filament-awin-theme/resources/css/theme.css'
+        'vendor/resma/filament-awin-theme/resources/css/theme.css',
     ];
     const allPaths = await collectModuleAssetsPaths(paths, 'Modules');
 
@@ -34,8 +32,6 @@ async function getConfig() {
             cors: true,
         },
     });
-
 }
 
 export default getConfig();
-

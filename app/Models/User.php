@@ -38,7 +38,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         'address',
         'active',
         'password_changed',
-        'profile_photo_path'
+        'profile_photo_path',
     ];
 
     /**
@@ -46,17 +46,14 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
      *
      * @var list<string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
-        /**
+    /**
      * The accessors to append to the model's array form.
      *
      * @var array<int, string>
      */
-    protected $appends = ["profile_photo_url", "name"];
+    protected $appends = ['profile_photo_url', 'name'];
 
     /**
      * Get the attributes that should be cast.
@@ -66,9 +63,9 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     protected function casts(): array
     {
         return [
-            "gender" => UserGenderEnum::class,
-            "department" => UserDepartmentEnum::class,
-            "phone_verified_at" => "datetime",
+            'gender' => UserGenderEnum::class,
+            'department' => UserDepartmentEnum::class,
+            'phone_verified_at' => 'datetime',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
@@ -76,7 +73,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
 
     public function getNameAttribute(): string
     {
-        return $this->first_name . " " . $this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     /**
@@ -87,7 +84,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         return Str::of($this->name)
             ->explode(' ')
             ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
 
@@ -110,7 +107,11 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     {
         // If the user has a profile picture path, return its full URL
         if ($this->profile_photo_path) {
-            return URL::temporarySignedRoute('profile.photo', now()->addMinutes(30), $this->profile_photo_path);
+            return URL::temporarySignedRoute(
+                'profile.photo',
+                now()->addMinutes(30),
+                $this->profile_photo_path,
+            );
         }
 
         // Otherwise, return the default profile picture URL

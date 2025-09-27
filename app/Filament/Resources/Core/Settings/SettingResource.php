@@ -19,11 +19,11 @@ class SettingResource extends Resource
 {
     protected static ?string $model = Setting::class;
 
-    protected static ?string $modelLabel = "تنظیمات";
+    protected static ?string $modelLabel = 'تنظیمات';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-    protected static ?string $navigationLabel = "تنظیمات";
-    protected static ?string $pluralLabel = "تنظیمات";
-    protected static string | UnitEnum | null $navigationGroup = "مدیریت اطلاعات عمومی";
+    protected static ?string $navigationLabel = 'تنظیمات';
+    protected static ?string $pluralLabel = 'تنظیمات';
+    protected static string|UnitEnum|null $navigationGroup = 'مدیریت اطلاعات عمومی';
 
     public static function form(Schema $schema): Schema
     {
@@ -38,8 +38,8 @@ class SettingResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
-        ];
+                //
+            ];
     }
 
     public static function getPages(): array

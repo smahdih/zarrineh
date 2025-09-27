@@ -4,10 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
-     * 
+     *
      * Run the migrations.
      */
     public function up(): void
@@ -16,8 +15,14 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->string('event')->nullable();
-            $table->enum('type', ['national', 'company', 'custom'])->default('national');
-            $table->foreignId('team_id')->nullable()->constrained('teams')->nullOnDelete();
+            $table
+                ->enum('type', ['national', 'company', 'custom'])
+                ->default('national');
+            $table
+                ->foreignId('team_id')
+                ->nullable()
+                ->constrained('teams')
+                ->nullOnDelete();
             $table->boolean('is_manual')->default(false);
             $table->timestamps();
         });

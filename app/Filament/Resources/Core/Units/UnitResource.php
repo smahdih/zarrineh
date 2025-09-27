@@ -18,11 +18,11 @@ use UnitEnum;
 class UnitResource extends Resource
 {
     protected static ?string $model = Unit::class;
-    protected static ?string $modelLabel = "واحد اندازه گیری";
-    protected static ?string $pluralModelLabel = "واحد های اندازه گیری";
+    protected static ?string $modelLabel = 'واحد اندازه گیری';
+    protected static ?string $pluralModelLabel = 'واحد های اندازه گیری';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-    protected static ?string $navigationLabel = "واحد های اندازه گیری";
-    protected static string | UnitEnum | null $navigationGroup = "مدیریت اطلاعات عمومی";
+    protected static ?string $navigationLabel = 'واحد های اندازه گیری';
+    protected static string|UnitEnum|null $navigationGroup = 'مدیریت اطلاعات عمومی';
 
     public static function form(Schema $schema): Schema
     {
@@ -37,8 +37,8 @@ class UnitResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
-        ];
+                //
+            ];
     }
 
     public static function getPages(): array

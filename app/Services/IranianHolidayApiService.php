@@ -15,18 +15,30 @@ class IranianHolidayApiService
      * @param bool $onlyHolidays Only holidays? (default: true)
      * @return array
      */
-    public static function fetchHolidays(int $year, ?int $month = null, ?int $day = null, bool $onlyHolidays = true): array
-    {
+    public static function fetchHolidays(
+        int $year,
+        ?int $month = null,
+        ?int $day = null,
+        bool $onlyHolidays = true,
+    ): array {
         $params = [
             'year' => $year,
-            'holiday' => $onlyHolidays ? 'true' : 'false'
+            'holiday' => $onlyHolidays ? 'true' : 'false',
         ];
-        if ($month) $params['month'] = $month;
-        if ($day) $params['day'] = $day;
+        if ($month) {
+            $params['month'] = $month;
+        }
+        if ($day) {
+            $params['day'] = $day;
+        }
 
         $response = Http::get('https://pnldev.com/api/calender', $params);
 
-        if (!$response->successful() || empty($response['status']) || empty($response['result'])) {
+        if (
+            !$response->successful() ||
+            empty($response['status']) ||
+            empty($response['result'])
+        ) {
             return [];
         }
 
@@ -52,26 +64,40 @@ class IranianHolidayApiService
         $eventStr = is_array($event) ? implode(' - ', $event) : $event;
 
         return [
-            'date_solar'     => sprintf('%04d-%02d-%02d', $dayData['solar']['year'], $dayData['solar']['month'], $dayData['solar']['day']),
-            'date_gregorian' => sprintf('%04d-%02d-%02d', $dayData['gregorian']['year'], $dayData['gregorian']['month'], $dayData['gregorian']['day']),
-            'holiday'        => (bool)($dayData['holiday'] ?? false),
-            'event'          => $eventStr,
-            'weekday_fa'     => $dayData['solar']['dayWeek'] ?? null,
-            'weekday_en'     => $dayData['gregorian']['dayWeek'] ?? null,
-            'month'          => $dayData['solar']['month'],
-            'day'            => $dayData['solar']['day'],
-            'year'           => $dayData['solar']['year'],
+            'date_solar' => sprintf(
+                '%04d-%02d-%02d',
+                $dayData['solar']['year'],
+                $dayData['solar']['month'],
+                $dayData['solar']['day'],
+            ),
+            'date_gregorian' => sprintf(
+                '%04d-%02d-%02d',
+                $dayData['gregorian']['year'],
+                $dayData['gregorian']['month'],
+                $dayData['gregorian']['day'],
+            ),
+            'holiday' => (bool) ($dayData['holiday'] ?? false),
+            'event' => $eventStr,
+            'weekday_fa' => $dayData['solar']['dayWeek'] ?? null,
+            'weekday_en' => $dayData['gregorian']['dayWeek'] ?? null,
+            'month' => $dayData['solar']['month'],
+            'day' => $dayData['solar']['day'],
+            'year' => $dayData['solar']['year'],
         ];
     }
 
     /**
      * Parses a month's data into an array of days.
      */
-    private static function parseMonth(array $monthData, bool $onlyHolidays): array
-    {
+    private static function parseMonth(
+        array $monthData,
+        bool $onlyHolidays,
+    ): array {
         $days = [];
         foreach ($monthData as $dayData) {
-            if ($onlyHolidays && !($dayData['holiday'] ?? false)) continue;
+            if ($onlyHolidays && !($dayData['holiday'] ?? false)) {
+                continue;
+            }
             $days[] = self::parseDay($dayData);
         }
         return $days;
@@ -80,12 +106,16 @@ class IranianHolidayApiService
     /**
      * Parses a year's data into an array of months.
      */
-    private static function parseYear(array $yearData, bool $onlyHolidays): array
-    {
+    private static function parseYear(
+        array $yearData,
+        bool $onlyHolidays,
+    ): array {
         $holidays = [];
         foreach ($yearData as $monthData) {
             foreach ($monthData as $dayData) {
-                if ($onlyHolidays && !($dayData['holiday'] ?? false)) continue;
+                if ($onlyHolidays && !($dayData['holiday'] ?? false)) {
+                    continue;
+                }
                 $holidays[] = self::parseDay($dayData);
             }
         }

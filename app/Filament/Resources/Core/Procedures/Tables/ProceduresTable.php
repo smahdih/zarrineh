@@ -14,17 +14,15 @@ class ProceduresTable
     {
         return $table
             ->columns([
-                TextColumn::make("name")
-                    ->label("نام")
-                    ->searchable(),
-                TextColumn::make("type")->label("نوع")->badge(),
-                TextColumn::make("created_at")
-                    ->label("ایجاد شده در")
+                TextColumn::make('name')->label('نام')->searchable(),
+                TextColumn::make('type')->label('نوع')->badge(),
+                TextColumn::make('created_at')
+                    ->label('ایجاد شده در')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make("updated_at")
-                    ->label("بروز شده در")
+                TextColumn::make('updated_at')
+                    ->label('بروز شده در')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -32,13 +30,9 @@ class ProceduresTable
             ->filters([
                 //
             ])
-            ->recordActions([
-                EditAction::make(),
-            ])
+            ->recordActions([EditAction::make()])
             ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
+                BulkActionGroup::make([DeleteBulkAction::make()]),
             ]);
     }
 }
