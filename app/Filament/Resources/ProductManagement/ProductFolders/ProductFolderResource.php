@@ -13,12 +13,16 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class ProductFolderResource extends Resource
 {
     protected static ?string $model = ProductFolder::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'lucide-folder-tree';
+
+    protected static string|UnitEnum|null $navigationGroup = 'مدیریت محصول ها';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {

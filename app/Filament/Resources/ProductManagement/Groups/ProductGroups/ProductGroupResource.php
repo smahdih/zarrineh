@@ -13,12 +13,18 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class ProductGroupResource extends Resource
 {
     protected static ?string $model = ProductGroup::class;
+    protected static ?string $modelLabel = 'گروه محصول';
+    protected static ?string $pluralModelLabel = 'گروه های محصول';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'گروه بندی';
+    protected static string|UnitEnum|null $navigationGroup = 'مدیریت محصول ها';
+    protected static ?int $navigationSort = 6;
 
     public static function form(Schema $schema): Schema
     {

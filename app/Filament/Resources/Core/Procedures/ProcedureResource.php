@@ -20,7 +20,7 @@ class ProcedureResource extends Resource
     protected static ?string $model = Procedure::class;
     protected static ?string $modelLabel = 'روند کاری';
     protected static ?string $pluralModelLabel = 'روندهای کاری';
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'mdi-timeline-outline';
     protected static ?string $navigationLabel = 'روندهای کاری';
     protected static string|UnitEnum|null $navigationGroup = 'مدیریت تولید';
     protected static ?int $navigationSort = 1;
