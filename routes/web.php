@@ -3,6 +3,7 @@
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,17 +28,18 @@ Route::middleware(['auth'])->group(function () {
         'settings.appearance',
     );
 
-    Route::get('/profile-photo/{path}', function ($path) {
+    Route::get('/files/{path}', function ($path) {
         abort_unless(request()->hasValidSignature(), 401);
+        /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
         $disk = Storage::disk('local');
-        if (!$disk->exists($path)) {
-            abort(404);
-        }
+        abort_unless($disk->exists($path), 404);
+        $file = $disk->get($path);
+        $mime = $disk->mimeType($path);
         // برگردوندن عکس برای نمایش
-        return response()->file($disk->path($path));
+        return Response::make($file, 200)->header('Content-Type', $mime);
     })
         ->where('path', '.*')
-        ->name(name: 'profile.photo');
+        ->name(name: 'storage.private');
 });
 
 require __DIR__ . '/auth.php';

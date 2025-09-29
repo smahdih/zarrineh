@@ -18,11 +18,6 @@ return new class extends Migration {
             $table
                 ->enum('type', ['national', 'company', 'custom'])
                 ->default('national');
-            $table
-                ->foreignId('team_id')
-                ->nullable()
-                ->constrained('teams')
-                ->nullOnDelete();
             $table->boolean('is_manual')->default(false);
             $table->timestamps();
         });

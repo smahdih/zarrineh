@@ -107,11 +107,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     {
         // If the user has a profile picture path, return its full URL
         if ($this->profile_photo_path) {
-            return URL::temporarySignedRoute(
-                'profile.photo',
-                now()->addMinutes(30),
-                $this->profile_photo_path,
-            );
+            return private_file_url($this->profile_photo_path);
         }
 
         // Otherwise, return the default profile picture URL

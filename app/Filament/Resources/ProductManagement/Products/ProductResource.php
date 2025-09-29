@@ -5,7 +5,9 @@ namespace App\Filament\Resources\ProductManagement\Products;
 use App\Filament\Resources\ProductManagement\Products\Pages\CreateProduct;
 use App\Filament\Resources\ProductManagement\Products\Pages\EditProduct;
 use App\Filament\Resources\ProductManagement\Products\Pages\ListProducts;
+use App\Filament\Resources\ProductManagement\Products\Pages\ViewProduct;
 use App\Filament\Resources\ProductManagement\Products\Schemas\ProductForm;
+use App\Filament\Resources\ProductManagement\Products\Schemas\ProductInfolist;
 use App\Filament\Resources\ProductManagement\Products\Tables\ProductsTable;
 use App\Models\Products\Product;
 use BackedEnum;
@@ -27,14 +29,14 @@ class ProductResource extends Resource
     protected static string|UnitEnum|null $navigationGroup = 'مدیریت محصول ها';
     protected static ?int $navigationSort = 1;
 
-    public static function form(Schema $schema): Schema
-    {
-        return ProductForm::configure($schema);
-    }
-
     public static function table(Table $table): Table
     {
         return ProductsTable::configure($table);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return ProductInfolist::configure($schema);
     }
 
     public static function getRelations(): array
@@ -49,6 +51,7 @@ class ProductResource extends Resource
         return [
             'index' => ListProducts::route('/'),
             'create' => CreateProduct::route('/create'),
+            'view' => ViewProduct::route('/{record}'),
             'edit' => EditProduct::route('/{record}/edit'),
         ];
     }

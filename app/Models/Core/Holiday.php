@@ -8,5 +8,5 @@ class Holiday extends Model
 {
     protected $table = 'holidays';
 
-    protected $fillable = ['date', 'event', 'type', 'team_id', 'is_manual'];
+    protected $fillable = ['date', 'event', 'type', 'is_manual'];
 }

@@ -19,7 +19,9 @@ class ProductsTable
     {
         return $table
             ->columns([
-                ImageColumn::make('avatar.path')->label('تصویر')->width(200),
+                ImageColumn::make('avatar.path_url')
+                    ->label('تصویر')
+                    ->visibility('public'),
                 TextColumn::make('name')
                     ->label('نام محصول')
                     ->searchable()

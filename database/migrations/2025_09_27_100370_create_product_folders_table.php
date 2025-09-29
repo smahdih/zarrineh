@@ -14,11 +14,13 @@ return new class extends Migration {
             $table->id();
             $table->string('serial')->unique();
             $table->text('avatar')->nullable();
-            $table
-                ->foreignId('folder_id')
-                ->nullable()
-                ->constrained('products_folders');
+            $table->unsignedBigInteger('folder_id')->nullable();
             $table->timestamps();
+
+            $table
+                ->foreign('folder_id')
+                ->references('id')
+                ->on('product_folders');
         });
     }
 

@@ -13,7 +13,7 @@ class ProductInfolist
     public static function configure(Schema $schema): Schema
     {
         return $schema->components([
-            ImageEntry::make('avatar.path')
+            ImageEntry::make('avatar.path_url')
                 ->label('تصویر محصول')
                 ->hiddenLabel()
                 ->columnSpanFull(),
@@ -22,7 +22,9 @@ class ProductInfolist
                 TextEntry::make('name')->label('نام محصول'),
                 TextEntry::make('user.name')->label('طراح'),
                 TextEntry::make('folder.serial')->label('کد پوشه'),
-            ])->columns(5),
+            ])
+                ->columnSpanFull()
+                ->columns(5),
             RepeatableEntry::make('variants')
                 ->label('سایز ها')
                 ->schema([
@@ -32,7 +34,7 @@ class ProductInfolist
                 ])
                 ->columnSpanFull()
                 ->columns(3),
-            ImageEntry::make('pictures.path')
+            ImageEntry::make('pictures.path_url')
                 ->label('تصویر محصول')
                 ->columnSpanFull()
                 ->hiddenLabel(),
