@@ -63,18 +63,25 @@ class CreateProduct extends Page
         return DB::transaction(function () use ($data) {
             // 1. پوشه جدید در صورت نیاز
             if (!empty($data['create_folder']) && $data['create_folder']) {
-                $folderAvatar = $data['folder_avatar'][0] ?? null;
-                $folderAvatarPath =
-                    $folderAvatar instanceof UploadedFile
-                        ? $folderAvatar->store('products/folders', 'public')
-                        : null;
+                if (!empty($data['new_folder']) && $data['new_folder']) {
+                    $folderAvatar = $data['folder_avatar'][0] ?? null;
+                    $folderAvatarPath =
+                        $folderAvatar instanceof UploadedFile
+                            ? $folderAvatar->store(
+                                'products/folders',
+                                options: 'local',
+                            )
+                            : null;
 
-                $folder = ProductFolder::create([
-                    'serial' => Str::random(8),
-                    'avatar' => $folderAvatarPath,
-                ]);
+                    $folder = ProductFolder::create([
+                        'serial' => Str::random(8),
+                        'avatar' => $folderAvatarPath,
+                    ]);
 
-                $data['folder_id'] = $folder->id;
+                    $data['folder_id'] = $folder->id;
+                } else {
+                    $data['folder_id'] = $data['folder'];
+                }
             }
 
             // 2. ایجاد محصول
@@ -87,7 +94,7 @@ class CreateProduct extends Page
                 'product_group_id' => $data['product_group_id'],
                 'folder_id' => $data['folder_id'] ?? null,
                 'type' => $data['type'],
-                'state' => 'DRAFT',
+                'state' => ProductState::Draft,
                 'description' => $data['description'] ?? null,
             ]);
 
@@ -96,7 +103,7 @@ class CreateProduct extends Page
                 $avatarFile = reset($data['avatar']);
                 if ($avatarFile instanceof UploadedFile) {
                     $path = $avatarFile->store(
-                        'products/avatars' . $data['product_serial'],
+                        'products/pictures/' . $data['product_serial'],
                         options: 'local',
                     );
 
@@ -111,7 +118,10 @@ class CreateProduct extends Page
             if (!empty($data['pictures']) && is_array($data['pictures'])) {
                 foreach ($data['pictures'] as $picture) {
                     if ($picture instanceof UploadedFile) {
-                        $path = $picture->store('products/pictures', 'public');
+                        $path = $picture->store(
+                            'products/pictures/' . $data['product_serial'],
+                            'local',
+                        );
 
                         $product->pictures()->create([
                             'path' => $path,
@@ -172,7 +182,7 @@ class CreateProduct extends Page
 
     public function confirm(?bool $return = false)
     {
-        $this->product->state = ProductState::Active->value;
+        $this->product->state = ProductState::Active;
         $this->product->save();
 
         if ($return) {
@@ -193,16 +203,16 @@ class CreateProduct extends Page
                 Wizard::make([
                     Wizard\Step::make('product')
                         ->label('محصول')
-                        ->icon('lucide-boxes')
+                        ->icon('')
                         ->schema($this->productForm())
                         ->columns(6),
                     Wizard\Step::make('variants')
                         ->label('سایز ها')
-                        ->icon('lucide-boxes')
+                        ->icon('')
                         ->schema($this->variantsForm()),
                     Wizard\Step::make('folder')
                         ->label('پوشه بندی')
-                        ->icon('lucide-folder-closed')
+                        ->icon('')
                         ->schema($this->folderForm()),
                     Wizard\Step::make('categories')
                         ->label('دسته بندی')
@@ -233,7 +243,7 @@ class CreateProduct extends Page
             TextInput::make('product_serial')
                 ->label('سریال')
                 ->hintIcon(
-                    'lucide-message-circle-question',
+                    'heroicon-o-question-mark-circle',
                     tooltip: 'این سریال مخصوص این محصول است و اگر محصول سایز های مختلف دارد، آن ها سریال مختص خود دارند.',
                 )
                 ->prefixAction(function (Set $set) {
@@ -248,7 +258,7 @@ class CreateProduct extends Page
                 })
                 ->suffixAction(
                     Action::make('generateSerial')
-                        ->icon('lucide-refresh-ccw')
+                        ->icon('heroicon-o-arrow-path')
                         ->label('سریال جدید')
                         ->action(function (Set $set) {
                             $set(
@@ -362,7 +372,7 @@ class CreateProduct extends Page
                     TextInput::make('variant_serial')
                         ->label('سریال')
                         ->hintIcon(
-                            'lucide-message-circle-question',
+                            'heroicon-o-question-mark-circle',
                             tooltip: 'این سریال مختص این سایز از محصول است. اگر این سایز از قبل سریال دارد لطفا آن سریال را اینجا وارد کنید.',
                         )
                         ->afterStateHydrated(function (Set $set) {
@@ -377,7 +387,7 @@ class CreateProduct extends Page
                         })
                         ->suffixAction(
                             Action::make('generateSerial')
-                                ->icon('lucide-refresh-ccw')
+                                ->icon('heroicon-o-arrow-path')
                                 ->label('سریال جدید')
                                 ->action(function (Set $set) {
                                     $set(
