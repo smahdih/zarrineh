@@ -20,7 +20,7 @@ class UnitResource extends Resource
     protected static ?string $model = Unit::class;
     protected static ?string $modelLabel = 'واحد اندازه گیری';
     protected static ?string $pluralModelLabel = 'واحد های اندازه گیری';
-    protected static string|BackedEnum|null $navigationIcon = 'css-ruler';
+    protected static string|BackedEnum|null $navigationIcon = '';
     protected static ?string $navigationLabel = 'واحد های اندازه گیری';
     protected static string|UnitEnum|null $navigationGroup = 'مدیریت اطلاعات عمومی';
 

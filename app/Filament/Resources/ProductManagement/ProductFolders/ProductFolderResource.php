@@ -19,7 +19,7 @@ class ProductFolderResource extends Resource
 {
     protected static ?string $model = ProductFolder::class;
 
-    protected static string|BackedEnum|null $navigationIcon = 'lucide-folder-tree';
+    protected static string|BackedEnum|null $navigationIcon = '';
 
     protected static string|UnitEnum|null $navigationGroup = 'مدیریت محصول ها';
     protected static ?int $navigationSort = 2;

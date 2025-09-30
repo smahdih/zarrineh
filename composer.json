@@ -17,11 +17,8 @@
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.1.1",
         "livewire/volt": "^1.7.0",
-        "mallardduck/blade-lucide-icons": "^1.23",
         "mhmiton/laravel-modules-livewire": "^5.2",
         "nwidart/laravel-modules": "^12.0",
-        "postare/blade-mdi": "^1.1",
-        "resma/filament-awin-theme": "^1.0",
         "spatie/laravel-permission": "^6.21"
     },
     "require-dev": {

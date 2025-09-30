@@ -20,7 +20,7 @@ class SettingResource extends Resource
     protected static ?string $model = Setting::class;
 
     protected static ?string $modelLabel = 'تنظیمات';
-    protected static string|BackedEnum|null $navigationIcon = 'mdi-cog-outline';
+    protected static string|BackedEnum|null $navigationIcon = '';
     protected static ?string $navigationLabel = 'تنظیمات';
     protected static ?string $pluralLabel = 'تنظیمات';
     protected static string|UnitEnum|null $navigationGroup = 'مدیریت اطلاعات عمومی';

@@ -21,7 +21,7 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static string|BackedEnum|null $navigationIcon = 'mdi-palette-swatch-outline';
+    protected static string|BackedEnum|null $navigationIcon = '';
     protected static ?string $modelLabel = 'محصول';
     protected static ?string $pluralModelLabel = 'محصول ها';
     protected static ?string $navigationLabel = 'محصول ها';

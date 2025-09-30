@@ -64,6 +64,6 @@ class ManagementPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([Authenticate::class])
-            ->plugins([FilamentAwinTheme::make()]);
+            ->plugins([]);
     }
 }
