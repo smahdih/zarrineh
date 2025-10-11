@@ -12,13 +12,19 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\ResellersPanel\Traits\BelongsToShop;
 
 // use Modules\ResellersPanel\Database\Factories\ShopUserFactory;
 
 class ShopUser extends User
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, SoftDeletes, HasRoles, HasApiTokens;
+    use HasFactory,
+        Notifiable,
+        SoftDeletes,
+        HasRoles,
+        HasApiTokens,
+        BelongsToShop;
 
     /**
      * The attributes that are mass assignable.
