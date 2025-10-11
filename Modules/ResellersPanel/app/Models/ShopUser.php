@@ -2,10 +2,12 @@
 
 namespace Modules\ResellersPanel\Models;
 
+use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Support\Str;
 use App\Enums\UserGenderEnum;
 use App\Enums\UserDepartmentEnum;
+use Filament\Models\Contracts\HasAvatar;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Foundation\Auth\User;
 use Spatie\Permission\Traits\HasRoles;
@@ -16,7 +18,7 @@ use Modules\ResellersPanel\Traits\BelongsToShop;
 
 // use Modules\ResellersPanel\Database\Factories\ShopUserFactory;
 
-class ShopUser extends User
+class ShopUser extends User implements FilamentUser, HasAvatar
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory,
@@ -101,7 +103,7 @@ class ShopUser extends User
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        return $this->is_owner = 1;
     }
 
     /**

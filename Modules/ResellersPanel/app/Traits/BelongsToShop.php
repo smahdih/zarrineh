@@ -13,7 +13,7 @@ trait BelongsToShop
         static::addGlobalScope(new TenantScope());
 
         static::creating(function ($model) {
-            if (session->has('shop_id')) {
+            if (session()->has('shop_id')) {
                 $model->shop_id = session()->get('shop_id');
             }
         });
