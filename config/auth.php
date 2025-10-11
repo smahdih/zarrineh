@@ -1,5 +1,7 @@
 <?php
 
+use Modules\ResellersPanel\Models\ShopUser;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -39,6 +41,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'shop' => [
+            'driver' => 'session',
+            'provider' => 'shop_users',
+        ],
+
+        'shop_api' => [
+            'driver' => 'sanctum',
+            'provider' => 'shop_users',
+        ],
     ],
 
     /*
@@ -64,17 +76,17 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'shop_users' => [
+            'driver' => 'eloquent',
+            'model' => ShopUser::class,
+        ],
     ],
 
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
     |--------------------------------------------------------------------------
-    |
+    |ای
     | These configuration options specify the behavior of Laravel's password
     | reset functionality, including the table utilized for token storage
     | and the user provider that is invoked to actually retrieve users.

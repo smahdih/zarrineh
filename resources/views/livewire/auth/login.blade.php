@@ -10,6 +10,8 @@ use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
+use App\Models\User;
+use Modules\ResellersPanel\Models\ShopUser;
 
 new #[Layout('components.layouts.auth')] class extends Component {
     #[Validate('required|string|email')]
@@ -29,18 +31,44 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         $this->ensureIsNotRateLimited();
 
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            RateLimiter::hit($this->throttleKey());
+        $userFromMainTable = null;
+        $userFromShopTable = null;
 
-            throw ValidationException::withMessages([
-                'email' => __('auth.failed'),
-            ]);
+        // Check if user exists in main User table
+        $userFromMainTable = User::where('email', $this->email)->first();
+
+        // Check if user exists in ShopUser table
+        $userFromShopTable = ShopUser::where('email', $this->email)->first();
+
+        // Try authentication with main guard first
+        if ($userFromMainTable && Auth::guard('web')->attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+            RateLimiter::clear($this->throttleKey());
+            Session::regenerate();
+
+            // Check if user also exists in ShopUser table (dual access)
+            if ($userFromShopTable) {
+                Session::put('has_shop_access', true);
+            }
+
+            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            return;
         }
 
-        RateLimiter::clear($this->throttleKey());
-        Session::regenerate();
+        // If main guard fails, try shop guard
+        if ($userFromShopTable && Auth::guard('shop')->attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+            RateLimiter::clear($this->throttleKey());
+            Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            $this->redirect(route('resell.product.index', absolute: false), navigate: true);
+            return;
+        }
+
+        // If both authentications fail
+        RateLimiter::hit($this->throttleKey());
+
+        throw ValidationException::withMessages([
+            'email' => __('auth.failed'),
+        ]);
     }
 
     /**
@@ -111,3 +139,4 @@ new #[Layout('components.layouts.auth')] class extends Component {
         </div>
     @endif
 </div>
+

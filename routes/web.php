@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Response;
 Route::get('/', function () {
     return view('welcome');
 })
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth:web,shop', 'verified'])
     ->name('home');
 
 Route::view('dashboard', 'dashboard')

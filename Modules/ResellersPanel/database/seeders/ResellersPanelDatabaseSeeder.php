@@ -11,6 +11,6 @@ class ResellersPanelDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+        $this->call([ShopSeeder::class, ShopUserSeeder::class]);
     }
 }
