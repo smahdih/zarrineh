@@ -15,12 +15,20 @@ use App\Filament\ShopManagement\Resources\ShopUsers\Pages\ListShopUsers;
 use App\Filament\ShopManagement\Resources\ShopUsers\Pages\CreateShopUser;
 use App\Filament\ShopManagement\Resources\ShopUsers\Schemas\ShopUserForm;
 use App\Filament\ShopManagement\Resources\ShopUsers\Tables\ShopUsersTable;
+use UnitEnum;
 
 class ShopUserResource extends Resource
 {
     protected static ?string $model = ShopUser::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $modelLabel = 'کارمند';
+    protected static ?string $pluralLabel = 'کارمند ها';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
+
+    protected static ?string $recordTitleAttribute = 'Users';
+
+    protected static string|UnitEnum|null $navigationGroup = 'پرسنلی';
 
     public static function form(Schema $schema): Schema
     {

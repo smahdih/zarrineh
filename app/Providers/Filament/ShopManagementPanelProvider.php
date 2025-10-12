@@ -29,7 +29,7 @@ class ShopManagementPanelProvider extends PanelProvider
             ->path('shopManagement')
             ->authGuard('shop')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
             ->font(
                 'dana',
