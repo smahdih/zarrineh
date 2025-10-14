@@ -18,6 +18,11 @@
                 <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')"
                     wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
             </flux:navlist.group>
+            <flux:navlist.group :heading="__('مدیریت محصولات')" class="grid">
+                <flux:navlist.item icon="home" :href="route('products.index')"
+                    :current="request()->routeIs('products.index')" wire:navigate>{{ __('محصول ها') }}
+                </flux:navlist.item>
+            </flux:navlist.group>
         </flux:navlist>
 
         <flux:spacer />
@@ -81,7 +86,8 @@
                 <flux:menu.separator />
 
                 <flux:menu.radio.group>
-                    <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}
+                    <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>
+                        {{ __('Settings') }}
                     </flux:menu.item>
                 </flux:menu.radio.group>
 

@@ -15,7 +15,7 @@ enum ProductState: string implements HasLabel, HasColor
     {
         return match ($this) {
             self::Draft => 'پیش نویس',
-            self::Active => 'قعال',
+            self::Active => 'فعال',
             self::Archived => 'بایگانی',
         };
     }
@@ -23,9 +23,9 @@ enum ProductState: string implements HasLabel, HasColor
     public function getColor(): string|array|null
     {
         return match ($this) {
-            self::Draft => 'info',
-            self::Active => 'success',
-            self::Archived => 'warning',
+            self::Draft => 'amber',
+            self::Active => 'green',
+            self::Archived => 'zinc',
         };
     }
 }

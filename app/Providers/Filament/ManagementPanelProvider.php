@@ -31,7 +31,7 @@ class ManagementPanelProvider extends PanelProvider
             ->path('management')
             ->font(
                 'dana',
-                asset('build/assets/app-BfUD28Bx.css'),
+                resource_path('css/app.css'),
                 LocalFontProvider::class,
             )
             ->colors([

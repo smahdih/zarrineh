@@ -28,6 +28,9 @@ Route::middleware(['auth'])->group(function () {
         'settings.appearance',
     );
 
+    Volt::route('products', 'products.index')->name('products.index');
+    Volt::route('products/{product}', 'products.show')->name('products.show');
+
     Route::get('/files/{path}', function ($path) {
         abort_unless(request()->hasValidSignature(), 401);
         /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
