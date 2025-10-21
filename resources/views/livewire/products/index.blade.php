@@ -128,7 +128,7 @@ new class extends Component {
                                 </flux:tooltip>
                                 <flux:tooltip content="نمایش">
                                     <flux:button icon="viewfinder-circle" icon-variant="outline" variant="ghost"
-                                        size="sm" color="gray"
+                                        size="sm" color="gray" wire:navigate.hover
                                         href="{{ route('products.show', ['product' => $product]) }}">
                                     </flux:button>
                                 </flux:tooltip>

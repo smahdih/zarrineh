@@ -5,14 +5,46 @@ use Livewire\Volt\Component;
 new class extends Component {
     public \App\Models\Products\Product $product;
 
+    public $selectedFolder = null;
+    public $searchFolder = '';
+
     public function mount(\App\Models\Products\Product $product)
     {
         $this->product = $product;
     }
+
+    #[\Livewire\Attributes\Computed]
+    public function folders()
+    {
+        return \App\Models\Products\ProductFolder::query()->when($this->searchFolder, fn($q) => $q->where('serial', 'like', '%' . $this->searchFolder . '%'))->limit(20)->get();
+    }
+
+    public function setFolder()
+    {
+        $this->product->folder_id = $this->selectedFolder;
+        $this->product->save();
+        $this->selectedFolder = '';
+
+        \Flux\Flux::toast('پوشه محصول تغییر کرد.');
+    }
+
+    public function unsetFolder()
+    {
+        $this->product->folder_id = null;
+        $this->product->save();
+
+        \Flux\Flux::toast('محصول از پوشه خارج شد.');
+    }
 }; ?>
 
 <div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="w-full flex flex-row items-center justify-between pb-10">
+            <flux:text size="lg">{{ $product->name ?? '' }}</flux:text>
+            <flux:tooltip content="برگشت">
+                <flux:button href="{{ route('products.index') }}" wire:navigate.hover icon="arrow-left" />
+            </flux:tooltip>
+        </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {{-- محتوای اصلی --}}
             <div class="lg:col-span-2 space-y-6">
@@ -269,21 +301,62 @@ new class extends Component {
                 </div>
 
                 {{-- پوشه --}}
-                @if ($product->folder)
-                    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">پوشه</h3>
-                        <div class="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-lg p-4">
-                            <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                            </svg>
-                            <p class="text-gray-900 font-medium">{{ $product->folder->serial }}</p>
+                <flux:card>
+                    <div class="flex flex-row w-full justify-between items-center">
+                        <div>
+                            <flux:text><span>پوشه: </span>
+                                <span>{{ $product->folder->serial ?? 'اختصاص داده نشده' }}</span>
+                            </flux:text>
                         </div>
+
+                        <div class="flex flex-row gap-5">
+                            @if (!$product->folder)
+                                <flux:modal.trigger name="create-folder">
+                                    <flux:tooltip content="ایجاد پوشه">
+                                        <flux:button icon="folder-plus" icon-variant="outline" />
+                                    </flux:tooltip>
+                                </flux:modal.trigger>
+                            @else
+                                <flux:modal.trigger name="create-folder">
+                                    <flux:tooltip content="تعویض پوشه">
+                                        <flux:button icon="folder-arrow-down" icon-variant="outline" />
+                                    </flux:tooltip>
+                                </flux:modal.trigger>
+
+                                <flux:tooltip content="حذف از پوشه">
+                                    <flux:button wire:click.prevent="unsetFolder" icon="folder-minus"
+                                        icon-variant="outline" />
+                                </flux:tooltip>
+                                <flux:tooltip content="باز کردن پوشه">
+                                    <flux:button icon="folder-open" icon-variant="outline" />
+                                </flux:tooltip>
+                            @endif
+                        </div>
+
                     </div>
-                @endif
+                </flux:card>
 
             </div>
         </div>
     </div>
+
+    <flux:modal name="create-folder" class="w-96">
+        <div class="space-y-6">
+            <flux:select wire:model="selectedFolder" variant="combobox" label="انتخاب پوشه"
+                placeholder="یک پوشه انتخاب کنید ..." empty="">
+                <x-slot name="input">
+                    <flux:select.input wire:model.live="searchFolder" />
+                </x-slot>
+
+                @forelse ($this->folders as $folder)
+                    <flux:select.option value="{{ $folder->id }}" wire:key="{{ $folder->serial }}">
+                        {{ $folder->serial }}</flux:select.option>
+                @empty
+                    <flux:text class="text-center p-4">پوشه ای پیدا نشد</flux:text>
+                @endforelse
+            </flux:select>
+
+            <flux:button wire:click.prevent="setFolder" variant="primary" color="lime">تایید</flux:button>
+        </div>
+    </flux:modal>
 </div>
