@@ -2,10 +2,12 @@
 
 namespace App\Models\Products;
 
+use App\Casts\Json;
 use App\Models\User;
 use App\Enums\ProductType;
 use App\Enums\ProductState;
 use App\Models\Core\Procedure;
+use App\Traits\HasTimeline;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Products\Groups\ProductGroup;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -17,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasTimeline;
 
     protected $table = 'products';
 
@@ -32,11 +34,13 @@ class Product extends Model
         'type',
         'state',
         'description',
+        'timeline',
     ];
 
     protected $casts = [
         'state' => ProductState::class,
         'type' => ProductType::class,
+        'timeline' => Json::class,
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
@@ -76,7 +80,10 @@ class Product extends Model
 
     public function pictures(): HasMany
     {
-        return $this->hasMany(ProductPicture::class, 'product_id');
+        return $this->hasMany(ProductPicture::class, 'product_id')->where(
+            'avatar',
+            false,
+        );
     }
 
     public function variants(): HasMany

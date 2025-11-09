@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('shop_order_trackings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders');
+            $table->foreignId('order_id')->constrained('shop_orders');
             $table->foreignId('team_id')->constrained('teams');
             $table->integer('level');
             $table->dateTime('done_at')->nullable();

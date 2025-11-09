@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Auth;
 use Modules\ResellersPanel\Models\ShopUser;
-// use Modules\ResellersPanel\Database\Factories\ShopingCartFactory;
+// use Modules\ResellersPanel\Database\Factories\ShoppingCartFactory;
 
-class ShopingCart extends Model
+class ShoppingCart extends Model
 {
-    protected $table = 'shoping_carts';
+    protected $table = 'shopping_carts';
     protected $fillable = [
         'created_by',
         'customer_id',
